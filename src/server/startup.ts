@@ -22,9 +22,11 @@ export default class Startup {
         this.app.use(express.static('public'))
         this.app.use(express.static('views'))
 
-        this.app.set('view engine', 'pug')
+        this.app.set('view engine', 'jsx')
+        this.app.engine('jsx', require('express-react-views').createEngine());
+
         this.app.get("/", (req: express.Request, res: express.Response) => {
-            res.render('index', { title: 'test', message: 'Hello World!'});
+            res.render('index', { name: 'test'});
         })
 
         this.app.listen(this.port, () => {
