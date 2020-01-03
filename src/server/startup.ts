@@ -31,6 +31,7 @@ export default class Startup {
         this.app.use(express.static('public'))
         this.app.use(express.static('views'))
         this.app.set('view engine', 'jsx')
+        this.app.set('views', __dirname + '/../views');
         this.app.engine('jsx', require('express-react-views').createEngine());
 
         this.app.get("/", (req: express.Request, res: express.Response) => {
